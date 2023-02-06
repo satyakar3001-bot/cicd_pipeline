@@ -14,7 +14,7 @@ pipeline{
         stage("build docker image"){
             steps{
                 script{
-                    bat 'docker build -t satu/devops-integration .'
+                    bat 'docker build -t satyakar3001/devops-integration .'
                 }
             }
         }
@@ -25,9 +25,7 @@ pipeline{
                     bat 'docker login -u satyakar3001 -p dockerhubpassword'
 }
 
-                    bat 'docker images'
-                    //bat 'docker ps -a'
-                    docker 'push satu/devops-integration'
+                    bat 'docker push satyakar3001/devops-integration'
                 }
             }
         }
