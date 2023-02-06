@@ -25,7 +25,8 @@ pipeline{
                     bat 'docker login -u satyakar3001 -p dockerhubpassword'
 }
 
-                    //bat 'docker push satu/devops-integration'
+                    bat 'docker images'
+                    bat 'docker ps -a'
                 }
             }
         }
