@@ -29,12 +29,15 @@ pipeline{
                 }
             }
         }
+        // stage("SSH into k8 cluster Server"){
+        //     def remote = [:]
+        //     remote.name = 'K8 master'
+        //     remote.host = '100'
+        // }
         stage("Deploy to kubernetes"){
             steps{
-                scripts{
-                    kubernetesDeploy (configs: 'deploymentservice.yaml', kubeconfigId: 'minikubeconfig3')
+                    kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'minikubeconfig2')
                 }
-            }
         }
     }
 }
