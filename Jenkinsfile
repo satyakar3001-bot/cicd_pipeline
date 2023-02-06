@@ -1,37 +1,31 @@
-pipeline {
+pipeline{
     agent any
     tools{
         maven 'maven_3_5_0'
     }
     stages{
-        stage('Build Maven'){
+        stage("Build Maven Project"){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Java-Techie-jt/devops-automation']]])
-                sh 'mvn clean install'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/satyakar3001-bot/cicd_pipeline.git']])
+                bat 'mvn clean install'
+                
             }
         }
-        stage('Build docker image'){
+        stage("build docker image"){
             steps{
                 script{
-                    sh 'docker build -t javatechie/devops-integration .'
+                    bat 'docker build -t satu/devops-integration .'
                 }
             }
         }
-        stage('Push image to Hub'){
+        stage("Push image to hub"){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u javatechie -p ${dockerhubpwd}'
-
+                    withCredentials([string(credentialsId: 'docker-hubpassword2', variable: 'dockerhubpassword2')]) {
+                    bat 'docker login -u satyakar3001 -p dockerhubpassword'
 }
-                   sh 'docker push javatechie/devops-integration'
-                }
-            }
-        }
-        stage('Deploy to k8s'){
-            steps{
-                script{
-                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
+
+                    //bat 'docker push satu/devops-integration'
                 }
             }
         }
