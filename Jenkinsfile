@@ -25,7 +25,7 @@ pipeline{
                     bat 'docker login -u satyakar3001 -p dockerhubpassword'
 }
 
-                    bat 'docker push satyakar3001/devops-integration:v00.1'
+                    bat 'docker push satyakar3001/devops-integration'
                 }
             }
         }
