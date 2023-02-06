@@ -27,6 +27,7 @@ pipeline{
 
                     bat 'docker images'
                     bat 'docker ps -a'
+                    docker 'push satu/devops-integration'
                 }
             }
         }
