@@ -21,7 +21,7 @@ pipeline{
         stage("Push image to hub"){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'docker-hubpassword2', variable: 'dockerhubpassword2')]) { // yet to chanfe docker password
+                    withCredentials([string(credentialsId: 'docker-hubpassword2', variable: 'dockerhubpwd')]) { // yet to chanfe docker password
                     bat 'docker login -u satyakar3001 -p dockerhubpassword'
 }
 
