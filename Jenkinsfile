@@ -32,7 +32,7 @@ pipeline{
 
         stage("Deploy to kubernetes"){
             steps{
-                    kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'minikubeconfig2') //key in locals file
+                    kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'minikubeconfig2') //key in locals files
                 }
         }
     }
