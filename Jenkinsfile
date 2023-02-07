@@ -21,7 +21,7 @@ pipeline{
         stage("Push image to hub"){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'docker-hubpassword2', variable: 'dockerhubpassword2')]) {
+                    withCredentials([string(credentialsId: 'docker-hubpassword2', variable: 'dockerhubpassword2')]) { // yet to chanfe docker password
                     bat 'docker login -u satyakar3001 -p dockerhubpassword'
 }
 
@@ -32,7 +32,7 @@ pipeline{
 
         stage("Deploy to kubernetes"){
             steps{
-                    kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'minikubeconfig2') // config file has local key ##
+                    kubernetesDeploy(configs: 'deploymentservice.yaml', kubeconfigId: 'minikubeconfig2') //key in locals file
                 }
         }
     }
